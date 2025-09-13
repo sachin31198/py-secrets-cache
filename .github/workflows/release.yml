@@ -20,7 +20,7 @@ on:
 # Once you have an API token, add it as a Repository Secret (PYPI_API_TOKEN)
 # under the GitHub repo, so that it can be used by GitHub Actions to deploy
 # to `pypi.org` whenever a new tag is pushed to GitHub:
-#   <https://github.com/rnag/secrets-cache/settings/secrets/actions/new>
+#   <https://github.com/rnag/py-secrets-cache/settings/secrets/actions/new>
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
