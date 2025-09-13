@@ -6,6 +6,11 @@ import pytest
 # from secrets_cache import secrets_cache
 
 
+from secrets_cache import get_secret, get_param
+
+secret = get_secret("my-secret")
+param = get_param("my-param")
+
 @pytest.fixture
 def response():
     """Sample pytest fixture.
