@@ -1,7 +1,7 @@
 # Publish package on main branch if it's tagged with 'v*'
 # Ref: https://github.community/t/run-workflow-on-push-tag-on-specific-branch/17519
 
-name: build & release
+name: release
 
 # Controls when the action will run.
 on:

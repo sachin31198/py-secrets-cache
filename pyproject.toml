@@ -1,6 +1,6 @@
 [project]
 name = "secrets-cache"
-version = "0.2.0"
+version = "0.3.0"
 description = "Cache secrets locally from AWS Secrets Manager and other secret stores."
 readme = "README.md"
 authors = [
@@ -38,9 +38,9 @@ cli = [
     'typer',  # CLI / optional but handy
 ]
 local = [
-    'boto3>=1.26',  # AWS SDK for fetching secrets
+    'boto3>=1.26',   # AWS SDK for fetching secrets
+    'tomli-w>=1.0',  # TOML writer for Python <3.11
     'tomli>=2.0; python_version<"3.11"',  # TOML reader for Python <3.11
-    'tomli-w>=1.0; python_version<"3.11"',  # TOML writer for Python <3.11
 ]
 lambda = []              # Lambda-friendly, skips boto3
 test = [

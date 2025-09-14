@@ -1,37 +1,17 @@
-"""Main module."""
-
-from pathlib import Path
+"""AWS module."""
+from json import loads
 
 import boto3
+from botocore.exceptions import ClientError
 
 from ._cache import cached_fetch
-
-
-# Optional: import TOML only if available
-try:
-    import tomllib  # Python 3.11+
-except ImportError:
-    try:
-        import tomli as tomllib  # Python 3.10
-    except ImportError:
-        tomllib = None
-
-try:
-    import tomli_w
-except ImportError:
-    tomli_w = None
-
+from ._constants import DEFAULT_CACHE_TTL, DEFAULT_AWS_REGION
 
 # Module-level caches
-_secret_cache = {}
-_param_cache = {}
 _boto_clients = {}
 
-# TOML cache file (optional)
-_CACHE_FILE = Path.home() / '.secrets_cache.toml'
 
-
-def get_boto_client(service: str, region: str = 'us-east-1'):
+def get_boto_client(service: str, region: str):
     """Cache boto3 clients per service/region."""
     key = service, region
     _client = _boto_clients.get(key)
@@ -40,49 +20,65 @@ def get_boto_client(service: str, region: str = 'us-east-1'):
     return _client
 
 
-def _read_toml_cache():
-    if not tomllib or not _CACHE_FILE.exists():
-        return {}
-    with _CACHE_FILE.open('rb') as f:
-        return tomllib.load(f)
-
-
-def _write_toml_cache(data):
-    if not tomli_w or not _CACHE_FILE.parent.exists():
-        return
-    with _CACHE_FILE.open('wb') as f:
-        tomli_w.dump(data, f)
-
-
-def get_secret(name: str, region: str = 'us-east-1', ttl: int = 7 * 24 * 3600):
+def get_secret(name: str,
+               region: str = DEFAULT_AWS_REGION,
+               ttl: int = DEFAULT_CACHE_TTL,
+               force_refresh: bool = False,
+               raw: bool = False) -> str | bytes | dict:
     """Get secret from AWS Secrets Manager with optional caching."""
-    return cached_fetch(_secret_cache, name, region, _fetch_secret, ttl)
+    value = cached_fetch('secretsmanager', name, region, _fetch_secret, ttl, force_refresh)
+
+    if raw:
+        return value
+
+    # Try to parse JSON (most Secrets Manager use case)
+    try:
+        return loads(value)
+    except (ValueError, TypeError):
+        return value
 
 
-def get_param(name: str, region: str = 'us-east-1', ttl: int = 7 * 24 * 3600):
+def get_param(name: str,
+              region: str = DEFAULT_AWS_REGION,
+              ttl: int = DEFAULT_CACHE_TTL,
+              force_refresh: bool = False) -> str:
     """Get parameter from AWS SSM Parameter Store with optional caching."""
-    return cached_fetch(_param_cache, name, region, _fetch_param, ttl)
+    return cached_fetch('ssm', name, region, _fetch_param, ttl, force_refresh)
 
 
-def _fetch_secret(name: str, region: str = 'us-east-1'):
+def _fetch_secret(name: str, region: str) -> str | bytes | None:
     client = get_boto_client('secretsmanager', region)
-    resp = client.get_secret_value(SecretId=name)
-    value = resp['SecretString']
 
-    # Update local TOML cache if available
-    data = _read_toml_cache()
-    data[name] = value
-    _write_toml_cache(data)
-    return value
+    try:
+        resp = client.get_secret_value(
+            SecretId=name
+        )
+    except ClientError as e:
+        # For a list of exceptions thrown, see
+        # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+        err_code = e.response['Error']['Code']
+        if err_code == 'ResourceNotFoundException':
+            print(f'The requested secret {name} was not found')
+        elif err_code == 'InvalidRequestException':
+            print('The request was invalid due to:', e)
+        elif err_code == 'InvalidParameterException':
+            print('The request had invalid params:', e)
+        elif err_code == 'DecryptionFailure':
+            print('The requested secret can\'t be decrypted using the provided KMS key:', e)
+        elif err_code == 'InternalServiceError':
+            print('An error occurred on service side:', e)
+    else:
+        # Secrets Manager decrypts the secret value using the associated KMS CMK
+        # Depending on whether the secret was a string or binary, only one of these fields will be populated
+        if (secret := resp.get('SecretString')) is not None:
+            return secret
+        return resp['SecretBinary']
 
 
-def _fetch_param(name: str, region: str = 'us-east-1'):
+def _fetch_param(name: str, region: str):
     client = get_boto_client('ssm', region)
-    resp = client.get_parameter(Name=name, WithDecryption=True)
-    value = resp['Parameter']['Value']
 
-    # Update local TOML cache if available
-    data = _read_toml_cache()
-    data[name] = value
-    _write_toml_cache(data)
-    return value
+    resp = client.get_parameter(Name=name, WithDecryption=True)
+
+    param = resp['Parameter']['Value']
+    return param
