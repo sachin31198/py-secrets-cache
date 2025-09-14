@@ -1,6 +1,9 @@
 # Secrets Cache
 
-![PyPI version](https://img.shields.io/pypi/v/secrets-cache.svg)
+[![PyPI version](https://img.shields.io/pypi/v/secrets-cache.svg)](https://pypi.org/project/secrets-cache/)
+[![PyPI license](https://img.shields.io/pypi/l/secrets-cache.svg)](https://pypi.org/project/secrets-cache/)
+[![PyPI Python versions](https://img.shields.io/pypi/pyversions/secrets-cache.svg)](https://pypi.org/project/secrets-cache/)
+[![GitHub Actions](https://github.com/rnag/secrets-cache/actions/workflows/release.yml/badge.svg)](https://github.com/rnag/secrets-cache/actions/workflows/release.yml)
 [![Documentation Status](https://readthedocs.org/projects/secrets-cache/badge/?version=latest)](https://secrets-cache.readthedocs.io/en/latest/?version=latest)
 
 Cache secrets locally from AWS Secrets Manager and other secret stores, with optional local caching for development or Lambda-friendly usage.
