@@ -85,5 +85,6 @@ def cached_fetch(service: str, key: str, region: str, fetcher, ttl: int, force_r
             return value
 
     value = fetcher(key, region)
-    update_cache(service, key, value, now)
+    if value is not None:
+        update_cache(service, key, value, now)
     return value
