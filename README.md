@@ -6,7 +6,8 @@
 [![GitHub Actions](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml/badge.svg)](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml)
 [![Documentation Status](https://readthedocs.org/projects/secrets-cache/badge/?version=latest)](https://secrets-cache.readthedocs.io/en/latest/?version=latest)
 
-> [!tip] Want a full AWS Lambda + CDK deployment example?
+> [!TIP]
+> Want a full AWS Lambda + CDK deployment example?
 > Check out [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
 > for a ready-to-deploy Python CDK project that demonstrates `secrets-cache` usage
 > with Secrets Manager and SSM parameters, including caching timings.
