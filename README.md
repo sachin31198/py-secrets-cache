@@ -17,40 +17,48 @@ Install the base package (minimal, Lambda-friendly):
 pip install secrets-cache[lambda]
 ````
 
-Install with **local cache support** (TOML) for testing / development:
+For local development or testing (with local TOML caching, AWS SDK):
 
 ```bash
 pip install secrets-cache[local]
 ```
 
-Install with CLI support:
+Optional CLI tools:
 
 ```bash
 pip install secrets-cache[cli]
 ```
 
-You can also combine extras:
-
-```bash
-pip install "secrets-cache[local,cli]"
-```
-
 ## Usage
 
+### Fetch a secret from AWS Secrets Manager
+
 ```python
-from secrets_cache import get_secret, get_param
+from secrets_cache import get_secret
 
-# Get a secret from AWS Secrets Manager
-my_secret = get_secret("my-secret-name", region="us-east-1")
+# Returns JSON-decoded dict if possible
+db_creds = get_secret("prod/AppBeta/MySQL")
 
-# Get a parameter from AWS SSM Parameter Store
-my_param = get_param("/my/parameter/name", region="us-east-1")
+# Returns raw string
+raw_value = get_secret("prod/AppBeta/MySQL", raw=True)
+
+# Force refresh from AWS, ignoring cache
+fresh_value = get_secret("prod/AppBeta/MySQL", force_refresh=True)
+```
+
+### Fetch a parameter from AWS SSM Parameter Store
+
+```python
+from secrets_cache import get_param
+
+api_url = get_param("prod/AppBeta/API_URL")
 ```
 
 **Notes:**
 
-* By default, secrets are cached **in memory** to reduce repeated AWS calls.
-* If `local` extra is installed, secrets are also stored in `~/.secrets_cache.toml` for local caching.
+* Secrets and parameters are **cached in-memory** and optionally in a **local TOML file** (`~/.secrets_cache.toml`) for repeated calls.
+* Default cache TTL is **1 week** (configurable via `SECRETS_CACHE_TTL` environment variable).
+* AWS region defaults to `AWS_REGION` environment variable or `us-east-1`.
 * Module-level caches persist across **warm AWS Lambda invocations**, so repeated calls in the same container are very fast.
 
 ## Features
