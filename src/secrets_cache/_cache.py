@@ -1,3 +1,4 @@
+"""Caching module."""
 from pathlib import Path
 from time import time
 
@@ -32,7 +33,6 @@ def _load_cache() -> dict:
 
     if _cache is None:
         if tomllib and _CACHE_FILE.exists():
-            print('WALLEN')
             with _CACHE_FILE.open('rb') as f:
                 _cache = tomllib.load(f)
         else:

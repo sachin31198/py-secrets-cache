@@ -1,4 +1,4 @@
-"""Main module."""
+"""AWS module."""
 from json import loads
 
 import boto3
