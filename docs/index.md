@@ -1,16 +1,6 @@
-# Welcome to Secrets Cache's documentation!
-
-## Contents
-
-- [Readme](readme.md)
-- [Installation](installation.md)
-- [Usage](usage.md)
-- [Modules](modules.md)
-- [Contributing](contributing.md)
-- [History](history.md)
-
-## Indices and tables
-
-- [Index](genindex)
-- [Module Index](modindex)
-- [Search](search)
+<!-- include README.md content -->
+{%
+    include-markdown "../README.md"
+    start="<!--intro-start-->"
+    end="<!--intro-end-->"
+%}

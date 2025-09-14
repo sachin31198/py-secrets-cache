@@ -6,17 +6,16 @@
 [![GitHub Actions](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml/badge.svg)](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml)
 [![Documentation Status](https://readthedocs.org/projects/secrets-cache/badge/?version=latest)](https://secrets-cache.readthedocs.io/en/latest/?version=latest)
 
-> [!TIP]
-> Want a full AWS Lambda + CDK deployment example?
-> Check out [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
-> for a ready-to-deploy Python CDK project that demonstrates `secrets-cache` usage
-> with Secrets Manager and SSM parameters, including caching timings.
+!!! tip
+    Check out [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
+    for a ready-to-deploy AWS Lambda + CDK project demonstrating `secrets-cache` usage
+    with Secrets Manager and SSM parameters, including caching timings.
 
 Cache secrets locally from AWS Secrets Manager and other secret stores, with optional local caching for development or Lambda-friendly usage.
 
 * PyPI package: https://pypi.org/project/secrets-cache/
 * Free software: MIT License
-* Documentation: https://secrets-cache.readthedocs.io.
+* Documentation: https://secrets-cache.readthedocs.io
 
 ## Installation
 
@@ -24,7 +23,7 @@ Install the base package (minimal, Lambda-friendly):
 
 ```bash
 pip install secrets-cache[lambda]
-````
+```
 
 For local development or testing (with local TOML caching, AWS SDK):
 
@@ -84,7 +83,7 @@ When running in AWS Lambda, you usually don’t want file-based caching. Use the
 
 ```bash
 pip install secrets-cache[lambda]
-````
+```
 
 ### Example Lambda handler
 
