@@ -1,3 +1,5 @@
+<!--intro-start-->
+
 # Secrets Cache
 
 [![PyPI version](https://img.shields.io/pypi/v/secrets-cache.svg)](https://pypi.org/project/secrets-cache/)
@@ -16,6 +18,8 @@ Cache secrets locally from AWS Secrets Manager and other secret stores, with opt
 * PyPI package: https://pypi.org/project/secrets-cache/
 * Free software: MIT License
 * Documentation: https://secrets-cache.readthedocs.io
+
+<!--intro-end-->
 
 ## Installation
 
