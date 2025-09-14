@@ -1,5 +1,10 @@
 # History
 
+## 0.3.1 (2025-09-13)
+
+* Update docs.
+* Publish CDK Example.
+
 ## 0.3.0 (2025-09-13)
 
 * Fix so local caching via TOML works.

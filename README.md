@@ -6,7 +6,7 @@
 [![PyPI license](https://img.shields.io/pypi/l/secrets-cache.svg)](https://pypi.org/project/secrets-cache/)
 [![PyPI Python versions](https://img.shields.io/pypi/pyversions/secrets-cache.svg)](https://pypi.org/project/secrets-cache/)
 [![GitHub Actions](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml/badge.svg)](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml)
-[![Documentation Status](https://readthedocs.org/projects/secrets-cache/badge/?version=latest)](https://secrets-cache.readthedocs.io/en/latest/?version=latest)
+[![Documentation Status](https://github.com/rnag/py-secrets-cache/actions/workflows/pages/pages-build-deployment/badge.svg)](https://ritviknag.com/py-secrets-cache/)
 
 !!! tip
     Check out [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
@@ -17,7 +17,7 @@ Cache secrets locally from AWS Secrets Manager and other secret stores, with opt
 
 * PyPI package: https://pypi.org/project/secrets-cache/
 * Free software: MIT License
-* Documentation: https://secrets-cache.readthedocs.io
+* Documentation: https://ritviknag.com/py-secrets-cache/
 
 ## Installation
 
