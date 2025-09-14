@@ -6,6 +6,11 @@
 [![GitHub Actions](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml/badge.svg)](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml)
 [![Documentation Status](https://readthedocs.org/projects/secrets-cache/badge/?version=latest)](https://secrets-cache.readthedocs.io/en/latest/?version=latest)
 
+> [!tip] Want a full AWS Lambda + CDK deployment example?
+> Check out [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
+> for a ready-to-deploy Python CDK project that demonstrates `secrets-cache` usage
+> with Secrets Manager and SSM parameters, including caching timings.
+
 Cache secrets locally from AWS Secrets Manager and other secret stores, with optional local caching for development or Lambda-friendly usage.
 
 * PyPI package: https://pypi.org/project/secrets-cache/
@@ -115,6 +120,68 @@ pip install secrets-cache[local]
 ```
 
 This enables optional `~/.secrets_cache.toml` caching for local testing.
+
+## AWS CDK Example
+
+We’ve created a small **AWS CDK Python project** that demonstrates how to use `secrets-cache` in an AWS Lambda function.
+
+**Repository:** [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
+
+This example shows:
+
+* How to deploy a Lambda function using CDK that automatically installs `secrets-cache`.
+* How to fetch **Secrets Manager secrets** and **SSM parameters** from Lambda.
+* How module-level caching in `secrets-cache` speeds up repeated fetches in warm Lambda containers.
+* How to log fetch times in milliseconds to observe caching in action.
+
+### Quickstart
+
+1. Sign up for an [AWS account](https://aws.amazon.com/free/) (free tier is sufficient).
+2. Install the [AWS CLI](https://aws.amazon.com/cli/) and run:
+
+```bash
+aws configure
+```
+
+3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop) (needed for CDK bundling).
+4. Clone the example repo:
+
+```bash
+git clone https://github.com/rnag/secrets-cache-cdk-example
+cd secrets-cache-cdk-example
+```
+
+5. Install dependencies and activate the virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+6. If this is your first CDK deployment in the account, bootstrap it:
+
+```bash
+cdk bootstrap
+```
+
+7. Deploy the stack:
+
+```bash
+cdk deploy
+```
+
+8. Invoke the Lambda and see **timings for secret/parameter fetches** in real time:
+
+```bash
+aws lambda invoke \
+  --function-name CdkExampleStack-TestLambda \
+  --log-type Tail \
+  --query 'LogResult' \
+  --output text |  base64 --decode
+```
+
+Logs will show how fast the secret and parameter are fetched, demonstrating caching between warm starts.
 
 ## Credits
 
