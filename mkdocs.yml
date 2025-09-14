@@ -1,5 +1,5 @@
 site_name: "Secrets Cache"
-site_url: "https://rnag.github.io/py-secrets-cache/"
+site_url: "http://ritviknag.com/py-secrets-cache/"
 theme:
   name: material
   features:
