@@ -19,8 +19,6 @@ Cache secrets locally from AWS Secrets Manager and other secret stores, with opt
 * Free software: MIT License
 * Documentation: https://secrets-cache.readthedocs.io
 
-<!--intro-end-->
-
 ## Installation
 
 Install the base package (minimal, Lambda-friendly):
@@ -190,3 +188,5 @@ Logs will show how fast the secret and parameter are fetched, demonstrating cach
 ## Credits
 
 Created with [Cookiecutter](https://github.com/audreyfeldroy/cookiecutter) and the [rnag/cookiecutter-pypackage](https://github.com/rnag/cookiecutter-pypackage) template.
+
+<!--intro-end-->
