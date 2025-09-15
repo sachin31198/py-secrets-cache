@@ -6,18 +6,18 @@
 [![PyPI license](https://img.shields.io/pypi/l/secrets-cache.svg)](https://pypi.org/project/secrets-cache/)
 [![PyPI Python versions](https://img.shields.io/pypi/pyversions/secrets-cache.svg)](https://pypi.org/project/secrets-cache/)
 [![GitHub Actions](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml/badge.svg)](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml)
-[![Documentation Status](https://github.com/rnag/py-secrets-cache/actions/workflows/pages/pages-build-deployment/badge.svg)](https://ritviknag.com/py-secrets-cache/)
+[![Documentation Status](https://github.com/rnag/py-secrets-cache/actions/workflows/gh-pages.yml/badge.svg)](https://secrets-cache.ritviknag.com)
 
-!!! tip
-    Check out [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
-    for a ready-to-deploy AWS Lambda + CDK project demonstrating `secrets-cache` usage
-    with Secrets Manager and SSM parameters, including caching timings.
+> [!TIP]
+> Check out [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
+> for a ready-to-deploy AWS Lambda + CDK project demonstrating `secrets-cache` usage
+> with Secrets Manager and SSM parameters, including caching timings.
 
 Cache secrets locally from AWS Secrets Manager and other secret stores, with optional local caching for development or Lambda-friendly usage.
 
 * PyPI package: https://pypi.org/project/secrets-cache/
 * Free software: MIT License
-* Documentation: https://ritviknag.com/py-secrets-cache/
+* Documentation: https://secrets-cache.ritviknag.com
 
 ## Installation
 

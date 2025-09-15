@@ -45,6 +45,7 @@ local = [
 docs = [
     'mkdocs',
     'mkdocs-material',
+    'mkdocs-github-admonitions-plugin',
     'mkdocs-markdownextradata-plugin',
     'mkdocs-macros-plugin',
     'mkdocs-include-markdown-plugin',

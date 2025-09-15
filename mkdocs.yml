@@ -1,12 +1,12 @@
 site_name: "Secrets Cache"
-site_url: "http://ritviknag.com/secrets-cache/"
+site_url: "https://secrets-cache.ritviknag.com"
 theme:
   name: material
   features:
     - navigation.tabs
     - navigation.instant
 markdown_extensions:
-  - admonition      # enables [!TIP], [!NOTE], etc.
+  - admonition
   - codehilite
   - toc:
       permalink: true
@@ -24,4 +24,4 @@ docs_dir: docs
 plugins:
   - search
   - include-markdown
-
+  - gh-admonitions  # enables [!TIP], [!NOTE], etc.
