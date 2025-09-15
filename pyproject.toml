@@ -51,6 +51,9 @@ docs = [
     'mkdocs-include-markdown-plugin',
 ]
 lambda = []              # Lambda-friendly, skips boto3
+dev = [
+    "bump2version",  # Automatic version bumping
+]
 test = [
     "coverage",  # testing
     "pytest",  # testing

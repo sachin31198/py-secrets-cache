@@ -1,5 +1,9 @@
 # History
 
+## 0.3.2 (2025-09-15)
+
+* Update docs.
+
 ## 0.3.1 (2025-09-13)
 
 * Update docs.
