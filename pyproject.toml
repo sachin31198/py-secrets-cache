@@ -1,7 +1,7 @@
 [project]
 name = "secrets-cache"
 version = "0.3.1"
-description = "Cache secrets locally from AWS Secrets Manager and other secret stores."
+description = "In-memory caching for AWS Secrets Manager / SSM in Lambda, with optional file-based cache for local use."
 readme = "README.md"
 authors = [
   {name = "Ritvik Nag", email = "me@ritviknag.com"}
@@ -9,7 +9,7 @@ authors = [
 maintainers = [
   {name = "Ritvik Nag", email = "me@ritviknag.com"}
 ]
-keywords = ["aws", "secrets", "ssm", "cache", "lambda"]
+keywords = ["aws", "secrets", "ssm", "cache", "lambda", "secrets-manager", "parameter-store"]
 classifiers = [
     # TODO
     # Ref: https://pypi.org/classifiers/
@@ -60,9 +60,10 @@ test = [
 ]
 
 [project.urls]
-bugs = "https://github.com/rnag/py-secrets-cache/issues"
-changelog = "https://github.com/rnag/py-secrets-cache/blob/master/changelog.md"
-homepage = "https://github.com/rnag/py-secrets-cache"
+"Source" = "https://github.com/rnag/py-secrets-cache"
+"Homepage" = "https://secrets-cache.ritviknag.com"
+"Bug Tracker" = "https://github.com/rnag/py-secrets-cache/issues"
+"Changelog" = "https://github.com/rnag/py-secrets-cache/blob/main/HISTORY.md"
 
 [project.scripts]
 secrets_cache = "secrets_cache.cli:app"

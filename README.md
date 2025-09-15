@@ -8,26 +8,27 @@
 [![GitHub Actions](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml/badge.svg)](https://github.com/rnag/py-secrets-cache/actions/workflows/release.yml)
 [![Documentation Status](https://github.com/rnag/py-secrets-cache/actions/workflows/gh-pages.yml/badge.svg)](https://secrets-cache.ritviknag.com)
 
+Cache secrets from **AWS Secrets Manager** and other stores **in-memory** — ideal for AWS Lambda and ephemeral environments.
+With the `[local]` extra, you also get optional **file-based caching** (TOML) for local development.
+
 > [!TIP]
-> Check out [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
-> for a ready-to-deploy AWS Lambda + CDK project demonstrating `secrets-cache` usage
-> with Secrets Manager and SSM parameters, including caching timings.
+> 💡 See [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
+> for a ready-to-deploy AWS Lambda + CDK project showcasing `secrets-cache` with
+> Secrets Manager and SSM Parameters, including caching timings.
 
-Cache secrets locally from AWS Secrets Manager and other secret stores, with optional local caching for development or Lambda-friendly usage.
+📖 [Docs / README website](https://secrets-cache.ritviknag.com) – mirrors this README exactly, with navigation and search
 
-* PyPI package: https://pypi.org/project/secrets-cache/
-* Free software: MIT License
-* Documentation: https://secrets-cache.ritviknag.com
+⭐ Star the project on [GitHub](https://github.com/rnag/py-secrets-cache) if you find it useful!
 
 ## Installation
 
-Install the base package (minimal, Lambda-friendly):
+Install the minimal, Lambda-friendly package [on PyPI](https://pypi.org/project/secrets-cache):
 
 ```bash
 pip install secrets-cache[lambda]
 ```
 
-For local development or testing (with local TOML caching, AWS SDK):
+For local development or testing (file-based cache + AWS SDK):
 
 ```bash
 pip install secrets-cache[local]
@@ -125,7 +126,7 @@ This enables optional `~/.secrets_cache.toml` caching for local testing.
 
 ## AWS CDK Example
 
-We’ve created a small **AWS CDK Python project** that demonstrates how to use `secrets-cache` in an AWS Lambda function.
+I've created a small **AWS CDK Python project** that demonstrates how to use `secrets-cache` in an AWS Lambda function.
 
 **Repository:** [secrets-cache-cdk-example](https://github.com/rnag/secrets-cache-cdk-example)
 

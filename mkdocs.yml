@@ -1,10 +1,33 @@
 site_name: "Secrets Cache"
 site_url: "https://secrets-cache.ritviknag.com"
+
+repo_url: https://github.com/rnag/py-secrets-cache
+repo_name: rnag/py-secrets-cache
+
 theme:
   name: material
   features:
-    - navigation.tabs
+    # - navigation.tabs
+    - navigation.sections
     - navigation.instant
+    - navigation.top
+    - navigation.footer
+    # - content.action.edit   # adds "Edit on GitHub"
+    # - content.action.view   # adds "View source"
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
 markdown_extensions:
   - admonition
   - codehilite
@@ -25,3 +48,11 @@ plugins:
   - search
   - include-markdown
   - gh-admonitions  # enables [!TIP], [!NOTE], etc.
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rnag/py-secrets-cache
+  announcement:
+    content: "⭐ Star us on [GitHub](https://github.com/rnag/py-secrets-cache)!"
+  homepage: https://github.com/rnag/py-secrets-cache
