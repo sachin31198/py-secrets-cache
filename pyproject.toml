@@ -1,6 +1,6 @@
 [project]
 name = "secrets-cache"
-version = "0.3.1"
+version = "0.3.2"
 description = "In-memory caching for AWS Secrets Manager / SSM in Lambda, with optional file-based cache for local use."
 readme = "README.md"
 authors = [
